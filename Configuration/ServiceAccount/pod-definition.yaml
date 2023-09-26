@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  securityContext:  # pod level
+    runAsUser: 1000
+  containers:
+    - name: nginx-container
+      image: nginx
+  serviceAccountName: dashboard-sa
+  automountServiceAccountToken: false  #default is true

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: MyPod
+  namespace: ckad
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      envFrom:
+        - configMapRef:
+            name: app-config
+
+      #OR
+      env:
+        - name: APP_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: APP_COLOR
+
+
